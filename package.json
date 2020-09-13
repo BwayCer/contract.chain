@@ -1,0 +1,8 @@
+{
+  "name": "contract.chain",
+  "version": "0.0.0",
+  "description": "我的合約集",
+  "devDependencies": {
+    "web3": "^1.2.11"
+  }
+}

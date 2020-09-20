@@ -4,13 +4,13 @@
       "anonymous": false,
       "inputs": [
         {
-          "indexed": false,
+          "indexed": true,
           "internalType": "bool",
           "name": "isWin",
           "type": "bool"
         },
         {
-          "indexed": false,
+          "indexed": true,
           "internalType": "address",
           "name": "player",
           "type": "address"

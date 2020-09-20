@@ -16,8 +16,8 @@ contract GemuPlay is NiMen {
     }
 
     event PlayUltimatePasswordLog(
-        bool isWin,
-        address player,
+        bool indexed isWin,
+        address indexed player,
         uint256 bonus,
         uint8 pw,
         uint8[] bets,
@@ -30,9 +30,9 @@ contract GemuPlay is NiMen {
         uint256 betsLen = bets.length;
         uint256 payRate = rangeCount / betsLen;
         uint256 bonus = msg.value * payRate * 98 / 100;
-        uint256 canPay = address(this).balance * payRate / 2;
+        uint256 canPay = address(this).balance / 2;
 
-        require(bonus <= canPay, "UltimatePassword: Please reduce the bet amount.");
+        require(bonus < canPay, "UltimatePassword: Please reduce the bet amount.");
 
         for (uint8 idx = 0; idx < betsLen; idx++) {
             uint8 bet = bets[idx];
@@ -47,7 +47,9 @@ contract GemuPlay is NiMen {
             }
         }
 
+        uint8 showUltiPw = 0;
         if (isWin) {
+            showUltiPw = ultiPw;
             smallerNumber = 0;
             largerNumber = 100;
             ultiPw = uint8(getRand(98)) + 1;
@@ -58,7 +60,7 @@ contract GemuPlay is NiMen {
             isWin,
             msg.sender,
             bonus,
-            isWin ? ultiPw : 0,
+            showUltiPw,
             bets,
             msg.value
         );

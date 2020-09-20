@@ -26,7 +26,6 @@
       "type": "event"
     },
     {
-      "constant": false,
       "inputs": [
         {
           "internalType": "uint128",
@@ -42,21 +41,17 @@
           "type": "uint128"
         }
       ],
-      "payable": true,
       "stateMutability": "payable",
       "type": "function"
     },
     {
-      "constant": false,
       "inputs": [],
       "name": "kill",
       "outputs": [],
-      "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "constant": false,
       "inputs": [
         {
           "internalType": "bytes",
@@ -66,12 +61,10 @@
       ],
       "name": "setSalt",
       "outputs": [],
-      "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "constant": false,
       "inputs": [
         {
           "internalType": "address payable",
@@ -81,16 +74,13 @@
       ],
       "name": "transfer",
       "outputs": [],
-      "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "constant": false,
       "inputs": [],
       "name": "withdraw",
       "outputs": [],
-      "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     }

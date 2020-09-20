@@ -1,4 +1,6 @@
-pragma solidity ^0.5.1;
+pragma solidity ^0.7.1;
+
+// SPDX-License-Identifier: CC0-1.0
 
 contract RandMeido {
     address payable private _ownerPayable;
@@ -30,7 +32,7 @@ contract RandMeido {
     }
 
     function updateSalt() private {
-        _solSaltB = sha256(abi.encodePacked(now, _solSaltB));
+        _solSaltB = sha256(abi.encodePacked(block.timestamp, _solSaltB));
         _solSaltA = keccak256(abi.encodePacked(_solSaltA, _solSaltB));
     }
 
@@ -46,7 +48,7 @@ contract RandMeido {
     );
 
     function getRand(uint128 total) external payable returns(uint128 rand) {
-        require(msg.value >= 1 szabo, "RandMeido: Please pay 1 szabo");
+        require(msg.value >= 1000 gwei, "RandMeido: Please pay 1000 gwei");
 
         updateSalt();
         bytes16 useSalt = bytes16(_solSaltA);

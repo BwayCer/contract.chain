@@ -3,23 +3,21 @@ pragma solidity ^0.7.1;
 // SPDX-License-Identifier: CC0-1.0
 
 contract RandMeido {
-    address payable private _ownerPayable;
-    address private _owner = _ownerPayable;
+    uint160 private _owner;
 
     bytes32 private _solSaltA;
     bytes32 private _solSaltB;
 
     modifier onlyOwner() {
-        require(msg.sender == _owner, "NiMen: caller is not the owner");
+        require(msg.sender == address(_owner), "NiMen: caller is not the owner.");
         _;
     }
 
-    function transfer(address payable newOwner) external {
-        address noone;
+    function transfer(uint160 newOwner) external {
+        uint160 noone;
         if (_owner != noone) {
-            require(msg.sender == _owner, "NiMen: caller is not the owner");
+            require(msg.sender == address(_owner), "NiMen: caller is not the owner.");
         }
-        _ownerPayable = newOwner;
         _owner = newOwner;
     }
 
@@ -28,7 +26,7 @@ contract RandMeido {
     }
 
     function kill() external onlyOwner {
-        selfdestruct(_ownerPayable);
+        selfdestruct(address(_owner));
     }
 
     function updateSalt() private {
@@ -48,7 +46,7 @@ contract RandMeido {
     );
 
     function getRand(uint128 total) external payable returns(uint128 rand) {
-        require(msg.value >= 1000 gwei, "RandMeido: Please pay 1000 gwei");
+        require(msg.value >= 1000 gwei, "RandMeido: Please pay 1000 gwei.");
 
         updateSalt();
         bytes16 useSalt = bytes16(_solSaltA);

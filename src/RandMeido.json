@@ -6,6 +6,25 @@
   },
   "abi": [
     {
+      "inputs": [
+        {
+          "internalType": "uint128",
+          "name": "total",
+          "type": "uint128"
+        }
+      ],
+      "name": "getRand",
+      "outputs": [
+        {
+          "internalType": "uint128",
+          "name": "rand",
+          "type": "uint128"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
       "anonymous": false,
       "inputs": [
         {
@@ -31,25 +50,6 @@
       "type": "event"
     },
     {
-      "inputs": [
-        {
-          "internalType": "uint128",
-          "name": "total",
-          "type": "uint128"
-        }
-      ],
-      "name": "getRand",
-      "outputs": [
-        {
-          "internalType": "uint128",
-          "name": "rand",
-          "type": "uint128"
-        }
-      ],
-      "stateMutability": "payable",
-      "type": "function"
-    },
-    {
       "inputs": [],
       "name": "kill",
       "outputs": [],
@@ -72,9 +72,9 @@
     {
       "inputs": [
         {
-          "internalType": "address payable",
+          "internalType": "uint160",
           "name": "newOwner",
-          "type": "address"
+          "type": "uint160"
         }
       ],
       "name": "transfer",
